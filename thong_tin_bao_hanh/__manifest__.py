@@ -20,6 +20,8 @@
         'views/loai_san_pham.xml',
         'views/chi_nhanh.xml',
         'views/nhan_vien.xml',
+        'views/thang_views.xml',
+        'views/nam_views.xml',
         'views/danh_muc.xml',
     ],
     # 'qweb': ['static/src/xml/*.xml'],

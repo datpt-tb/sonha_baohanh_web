@@ -10,3 +10,5 @@ from . import hinh_thuc_trao_doi
 from . import trang_thai_bao_hanh
 from . import nhan_vien
 from . import nguoi_dung
+from . import thang
+from . import nam
