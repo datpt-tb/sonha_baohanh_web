@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_thong_tin_bao_hanh,access_thong_tin_bao_hanh,model_thong_tin_bao_hanh,,1,1,1,1
+access_tinh_thanh,access_tinh_thanh,model_tinh_thanh,,1,1,1,1
+access_quan_huyen,access_quan_huyen,model_quan_huyen,,1,1,1,1
+access_phuong_xa,access_phuong_xa,model_phuong_xa,,1,1,1,1
+access_loai_san_pham,access_loai_san_pham,model_loai_san_pham,,1,1,1,1
+access_chi_nhanh,access_chi_nhanh,model_chi_nhanh,,1,1,1,1
+access_nhan_vien,access_nhan_vien,model_nhan_vien,,1,1,1,1
+access_nguoi_dung,access_nguoi_dung,model_nguoi_dung,,1,1,1,1

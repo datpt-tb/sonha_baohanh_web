@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--man hien thi form view-->
+        <record id="thong_tin_bao_hanh_form_view" model="ir.ui.view">
+            <!-- ten minh dat-->
+            <field name="name">thong.tin.bao.hanh.form.view</field>
+            <!-- ten bang-->
+            <field name="model">thong.tin.bao.hanh</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="trang_thai_id"/>
+                            <field name="nguoi_bao"/>
+                            <field name="thong_tin_khach_hang"/>
+                            <field name="so_dien_thoai"/>
+                            <field name="tinh_thanh_id"/>
+                            <field name="quan_huyen_id" domain="[('tinh_thanh_id', '=', tinh_thanh_id)]"/>
+                            <!--                            <field name="quan_huyen_id"/>-->
+                            <field name="phuong_xa_id"/>
+                            <field name="dia_chi"/>
+                            <field name="loai_san_pham_id"/>
+                            <field name="thong_tin_loi"/>
+                            <field name="chi_nhanh_id"/>
+                            <!--                            <field name="nhan_vien_id"/>-->
+
+                            <!--quan_ly_id = fields.Many2one('nguoi.dung', string="Quản lý")-->
+
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--man hien thi danh sach-->
+        <record id="thong_tin_bao_hanh_tree_view" model="ir.ui.view">
+            <field name="name">thong.tin.bao.hanh.tree.view</field>
+            <field name="model">thong.tin.bao.hanh</field>
+            <field name="arch" type="xml">
+                <tree string="thong_tin_bao_hanh" default_order="create_date desc" editable="bottom">
+                    <!--                    <field name="trang_thai_id"/>-->
+                    <field name="id"/>
+                    <field name="nguoi_bao"/>
+                    <field name="thong_tin_khach_hang"/>
+                    <field name="so_dien_thoai"/>
+                    <field name="tinh_thanh_id"/>
+                    <field name="quan_huyen_id" domain="[('tinh_thanh_id', '=', tinh_thanh_id)]"/>
+                    <!--                    <field name="quan_huyen_id"/>-->
+                    <field name="phuong_xa_id" domain="[('quan_huyen_id', '=', quan_huyen_id)]"/>
+                    <!--                    <field name="phuong_xa_id"/>-->
+                    <field name="dia_chi"/>
+                    <field name="loai_san_pham_id"/>
+                    <field name="thong_tin_loi"/>
+                    <field name="chi_nhanh_id"/>
+                    <!--                    <field name="nhan_vien_id"/>-->
+                    <field name="ngay_goi"/>
+                    <field name="ngay_hen"/>
+                    <field name="ngay_lap"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--để lọc-->
+        <!--
+        <record id="nguoi_dung_search_view" model="ir.ui.view">
+            <field name="name">nguoi.dung.search.view</field>
+            <field name="model">nguoi.dung</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="code" string="Mã người dùng"/>
+                    <field name="description" string="Tên người dùng"/>
+                </search>
+            </field>
+        </record>
+        -->
+        <record id="action_thong_tin_bao_hanh" model="ir.actions.act_window">
+            <field name="name">Thông tin bảo hành</field> <!--hiển thị title trong danh sách -->
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">thong.tin.bao.hanh</field>
+            <!-- <field name="view_type">form</field> --> <!-- Odoo 13 has removed this field -->
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('thong_tin_bao_hanh_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('thong_tin_bao_hanh_form_view')})]"/>
+        </record>
+
+    </data>
+</odoo>
