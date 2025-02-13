@@ -15,12 +15,12 @@
                             <field name="nguoi_bao"/>
                             <field name="thong_tin_khach_hang"/>
                             <field name="so_dien_thoai"/>
-                            <field name="tinh_thanh_id"/>
-                            <field name="quan_huyen_id" domain="[('tinh_thanh_id', '=', tinh_thanh_id)]"/>
+                            <field name="province_id"/>
+                            <field name="district_id" domain="[('province_id', '=', province_id)]"/>
                             <!--                            <field name="quan_huyen_id"/>-->
-                            <field name="phuong_xa_id"/>
+                            <field name="ward_commune_id"/>
                             <field name="dia_chi"/>
-                            <field name="loai_san_pham_id"/>
+                            <field name="product_type_id"/>
                             <field name="thong_tin_loi"/>
                             <field name="chi_nhanh_id"/>
                             <!--                            <field name="nhan_vien_id"/>-->
@@ -45,13 +45,13 @@
                     <field name="nguoi_bao"/>
                     <field name="thong_tin_khach_hang"/>
                     <field name="so_dien_thoai"/>
-                    <field name="tinh_thanh_id"/>
-                    <field name="quan_huyen_id" domain="[('tinh_thanh_id', '=', tinh_thanh_id)]"/>
+                    <field name="province_id"/>
+                    <field name="district_id" domain="[('province_id', '=', province_id)]"/>
                     <!--                    <field name="quan_huyen_id"/>-->
-                    <field name="phuong_xa_id" domain="[('quan_huyen_id', '=', quan_huyen_id)]"/>
+                    <field name="ward_commune_id" domain="[('district_id', '=', district_id)]"/>
                     <!--                    <field name="phuong_xa_id"/>-->
                     <field name="dia_chi"/>
-                    <field name="loai_san_pham_id"/>
+                    <field name="product_type_id"/>
                     <field name="thong_tin_loi"/>
                     <field name="chi_nhanh_id"/>
                     <!--                    <field name="nhan_vien_id"/>-->

@@ -4,7 +4,7 @@
               name="Thông tin bảo hành"
               sequence="1"/>
 
-    <menuitem id="menu_danh_muc_root"
+    <menuitem id="menu_category_root"
               name="Danh mục"
               parent="menu_thong_tin_bao_hanh"
               action="action_thong_tin_bao_hanh"
@@ -13,43 +13,43 @@
     <menuitem id="menu_danh_muc_nguoi_dung"
               name="Người dùng"
               action="action_nguoi_dung"
-              parent="menu_danh_muc_root"
+              parent="menu_category_root"
               sequence="3"/>
 
-    <menuitem id="menu_danh_muc_tinh_thanh"
+    <menuitem id="menu_category_province"
               name="Tỉnh thành"
-              action="action_tinh_thanh"
-              parent="menu_danh_muc_root"
+              action="action_province"
+              parent="menu_category_root"
               sequence="4"/>
 
-    <menuitem id="menu_danh_muc_quan_huyen"
+    <menuitem id="menu_category_district"
               name="Quận huyện"
-              action="action_quan_huyen"
-              parent="menu_danh_muc_root"
-              sequence="4"/>
-
-    <menuitem id="menu_danh_muc_phuong_xa"
-              name="Phường/xã"
-              action="action_phuong_xa"
-              parent="menu_danh_muc_root"
+              action="action_district"
+              parent="menu_category_root"
               sequence="5"/>
 
-    <menuitem id="menu_danh_muc_loai_san_pham"
-              name="Loại sản phẩm"
-              action="action_loai_san_pham"
-              parent="menu_danh_muc_root"
+    <menuitem id="menu_category_ward_commune"
+              name="Phường/xã"
+              action="action_ward_commune"
+              parent="menu_category_root"
               sequence="6"/>
+
+    <menuitem id="menu_category_product_type"
+              name="Loại sản phẩm"
+              action="action_product_type"
+              parent="menu_category_root"
+              sequence="7"/>
 
      <menuitem id="menu_danh_muc_chi_nhanh"
               name="Chi nhánh"
               action="action_chi_nhanh"
-              parent="menu_danh_muc_root"
-              sequence="7"/>
+              parent="menu_category_root"
+              sequence="8"/>
 
      <menuitem id="menu_danh_muc_nhan_vien"
               name="Nhân viên"
               action="action_nhan_vien"
-              parent="menu_danh_muc_root"
-              sequence="8"/>
+              parent="menu_category_root"
+              sequence="9"/>
 
 </odoo>
