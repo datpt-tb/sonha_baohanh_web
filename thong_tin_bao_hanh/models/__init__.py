@@ -10,3 +10,5 @@ from . import form_exchange
 from . import warranty_status
 from . import nhan_vien
 from . import nguoi_dung
+from . import thang
+from . import nam
