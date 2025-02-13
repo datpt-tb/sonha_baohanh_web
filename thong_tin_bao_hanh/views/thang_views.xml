@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_thang_tree" model="ir.ui.view">
+        <field name="name">view.thang.tree</field>
+        <field name="model">thang</field>
+        <field name="arch" type="xml">
+            <tree string="Tháng" editable="bottom">
+                <field name="thang"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="thang_action" model="ir.actions.act_window">
+        <field name="name">Tháng</field>
+        <field name="res_model">thang</field>
+        <field name="view_mode">tree</field>
+    </record>
+</odoo>

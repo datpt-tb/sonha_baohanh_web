@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_nam_tree" model="ir.ui.view">
+        <field name="name">view.nam.tree</field>
+        <field name="model">nam</field>
+        <field name="arch" type="xml">
+            <tree string="Năm" editable="bottom">
+                <field name="nam"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="nam_action" model="ir.actions.act_window">
+        <field name="name">Năm</field>
+        <field name="res_model">nam</field>
+        <field name="view_mode">tree</field>
+    </record>
+</odoo>
