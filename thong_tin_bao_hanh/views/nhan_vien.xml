@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        man hien thi form view
+<!--        man hien thi form view-->
         <record id="nhan_vien_form_view" model="ir.ui.view">
             <!-- ten minh dat-->
             <field name="name">nhan.vien.form.view</field>

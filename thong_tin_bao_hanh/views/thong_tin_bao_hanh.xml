@@ -11,7 +11,7 @@
                 <form>
                     <sheet>
                         <group>
-                            <field name="trang_thai_id"/>
+<!--                            <field name="trang_thai_id"/>-->
                             <field name="nguoi_bao"/>
                             <field name="thong_tin_khach_hang"/>
                             <field name="so_dien_thoai"/>
