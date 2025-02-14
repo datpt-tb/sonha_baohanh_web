@@ -55,13 +55,37 @@
     <menuitem id="menu_danh_muc_thang"
               name="Tháng"
               action="thang_action"
-              parent="menu_danh_muc_root"
+              parent="menu_category_root"
               sequence="9"/>
 
     <menuitem id="menu_danh_muc_nam"
               name="Năm"
               action="nam_action"
-              parent="menu_danh_muc_root"
+              parent="menu_category_root"
               sequence="10"/>
+
+    <menuitem id="menu_error_group"
+              name="Nhóm lỗi"
+              action="error_group_action"
+              parent="menu_category_root"
+              sequence="11"/>
+
+    <menuitem id="menu_error_code"
+              name="Mã lỗi"
+              action="error_code_action"
+              parent="menu_category_root"
+              sequence="12"/>
+
+    <menuitem id="menu_form_exchange"
+              name="Hình thức trao đổi"
+              action="form_exchange_action"
+              parent="menu_category_root"
+              sequence="13"/>
+
+    <menuitem id="menu_warranty_status"
+              name="Trạng thái"
+              action="warranty_status_action"
+              parent="menu_category_root"
+              sequence="14"/>
 
 </odoo>
