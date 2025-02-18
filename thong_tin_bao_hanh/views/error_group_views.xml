@@ -4,7 +4,8 @@
         <field name="name">error.group.tree.view</field>
         <field name="model">error.group</field>
         <field name="arch" type="xml">
-            <tree string="Cấu hình nhóm lỗi">
+            <tree string="Cấu hình nhóm lỗi" editable="bottom">
+<!--                <field name="company_id"/>-->
                 <field name="error_group_code"/>
                 <field name="error_group_name"/>
             </tree>
@@ -17,6 +18,7 @@
         <field name="arch" type="xml">
             <form string="Cấu hình nhóm lỗi">
                 <group>
+<!--                    <field name="company_id"/>-->
                     <field name="error_group_code"/>
                     <field name="error_group_name"/>
                 </group>
