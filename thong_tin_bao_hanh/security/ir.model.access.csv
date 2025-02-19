@@ -1,7 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
-access_thong_tin_bao_hanh,access_thong_tin_bao_hanh,model_thong_tin_bao_hanh,,1,1,1,1
-
 access_province,access_province,model_province,,1,1,1,1
 
 access_district,access_district,model_district,,1,1,1,1
@@ -16,9 +14,7 @@ access_nhan_vien,access_nhan_vien,model_nhan_vien,,1,1,1,1
 
 access_nguoi_dung,access_nguoi_dung,model_nguoi_dung,,1,1,1,1
 
-access_thang,access_thang,model_thang,,1,1,1,1
-
-access_nam,access_nam,model_nam,,1,1,1,1
+access_produce_year,access_produce_year,model_produce_year,,1,1,1,1
 
 access_error_group,access_error_group,model_error_group,,1,1,1,1
 
@@ -27,3 +23,5 @@ access_error_code,access_error_code,model_error_code,,1,1,1,1
 access_form_exchange,access_form_exchange,model_form_exchange,,1,1,1,1
 
 access_warranty_status,access_warranty_status,model_warranty_status,,1,1,1,1
+
+access_warranty_information,access_warranty_information,model_warranty_information,,1,1,1,1

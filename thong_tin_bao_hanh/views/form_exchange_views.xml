@@ -4,7 +4,7 @@
         <field name="name">form.exchange.tree.view</field>
         <field name="model">form.exchange</field>
         <field name="arch" type="xml">
-            <tree string="Hình thức trao đổi">
+            <tree string="Hình thức trao đổi"  editable="bottom">
                 <field name="form_exchange_code"/>
                 <field name="form_exchange_name"/>
             </tree>

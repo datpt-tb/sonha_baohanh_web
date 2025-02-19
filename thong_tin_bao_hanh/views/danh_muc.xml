@@ -7,7 +7,7 @@
     <menuitem id="menu_category_root"
               name="Danh mục"
               parent="menu_thong_tin_bao_hanh"
-              action="action_thong_tin_bao_hanh"
+              action="action_warranty_information"
               sequence="2"/>
 
     <menuitem id="menu_danh_muc_nguoi_dung"
@@ -52,15 +52,9 @@
               parent="menu_category_root"
               sequence="9"/>
 
-    <menuitem id="menu_danh_muc_thang"
-              name="Tháng"
-              action="thang_action"
-              parent="menu_category_root"
-              sequence="9"/>
-
     <menuitem id="menu_danh_muc_nam"
               name="Năm"
-              action="nam_action"
+              action="produce_year_action"
               parent="menu_category_root"
               sequence="10"/>
 
@@ -82,10 +76,32 @@
               parent="menu_category_root"
               sequence="13"/>
 
-    <menuitem id="menu_warranty_status"
-              name="Trạng thái"
-              action="warranty_status_action"
-              parent="menu_category_root"
-              sequence="14"/>
+<!--    <menuitem id="menu_warranty_status"-->
+<!--              name="Trạng thái"-->
+<!--              action="warranty_status_action"-->
+<!--              parent="menu_category_root"-->
+<!--              sequence="14"/>-->
 
+    <menuitem id="menu_staff_warranty_information"
+              name="Thông tin bảo hành(Nhân viên)"
+              parent="menu_thong_tin_bao_hanh"
+              sequence="3"/>
+
+    <menuitem id="menu_all_staff_warranty_information"
+              name="Tổng quan"
+              action="action_staff_warranty_information"
+              parent="menu_staff_warranty_information"
+              sequence="3"/>
+
+    <menuitem id="menu_open_staff_warranty_information"
+              name="Danh sách mở"
+              action="action_open_staff_warranty_information"
+              parent="menu_staff_warranty_information"
+              sequence="3"/>
+
+    <menuitem id="menu_close_staff_warranty_information"
+              name="Danh sách đóng"
+              action="action_close_staff_warranty_information"
+              parent="menu_staff_warranty_information"
+              sequence="3"/>
 </odoo>

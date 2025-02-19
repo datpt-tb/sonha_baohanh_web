@@ -1,4 +1,3 @@
-from . import thong_tin_bao_hanh
 from . import province
 from . import district
 from . import ward_commune
@@ -10,5 +9,5 @@ from . import form_exchange
 from . import warranty_status
 from . import nhan_vien
 from . import nguoi_dung
-from . import thang
-from . import nam
+from . import produce_year
+from . import warranty_information
