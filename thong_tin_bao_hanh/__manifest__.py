@@ -8,7 +8,7 @@
     'category': '',
     'version': '0.1',
     'depends': [
-        'base',
+        'base', 'mail'
     ],
     'data': [
         'security/ir.model.access.csv',

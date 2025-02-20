@@ -3,6 +3,7 @@ from odoo import api, fields, models
 
 class WarrantyInformation(models.Model):
     _name = 'warranty.information'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     id = fields.Char(string="ID")
     reporter = fields.Char(string="Người báo")
@@ -21,17 +22,17 @@ class WarrantyInformation(models.Model):
     number_warranty_times = fields.Integer(string="Số lần bảo hành")
     warranty_status = fields.Selection([('open', "Mở"),
                                         ('close', "Đóng")], string="Trạng thái",
-                                       default='open', compute="change_status", store=True)
-    error_code = fields.Many2one('error.code', string="Mã lỗi")
+                                       default='open', compute="change_status", store=True, tracking=True)
+    error_code = fields.Many2one('error.code', string="Mã lỗi", tracking=True)
 
     staff_number = fields.Char(string="Điện thoại nhân viên")
     call_date = fields.Datetime(string="Ngày gọi", default=fields.Datetime.now)
     appointment_date = fields.Datetime(string="Ngày hẹn", default=fields.Datetime.now)
     note = fields.Text(string="Ghi chú")
     amount = fields.Float(string="Số lượng")
-    error_cause = fields.Text(string="Nguyên nhân lỗi")
-    product_code = fields.Char(string="Mã sản phẩm")
-    processing_content = fields.Text(string="Nội dung xử lý")
+    error_cause = fields.Text(string="Nguyên nhân lỗi", tracking=True)
+    product_code = fields.Char(string="Mã sản phẩm", tracking=True)
+    processing_content = fields.Text(string="Nội dung xử lý", tracking=True)
     produce_month = fields.Selection([('one', 1),
                                       ('two', 2),
                                       ('three', 3),
@@ -43,14 +44,14 @@ class WarrantyInformation(models.Model):
                                       ('nine', 9),
                                       ('ten', 10),
                                       ('eleven', 11),
-                                      ('twelve', 12),], string="Tháng sản xuất")
-    distance = fields.Char(string="Cự li di chuyển(km)")
-    service_fee = fields.Float(string="Phí dịch vụ")
-    sent_date = fields.Datetime(string="Ngày gửi báo cáo")
-    return_date = fields.Datetime(string="Ngày trả hàng")
-    picture = fields.Many2many('ir.attachment', string="Ảnh hiện trường")
-    exchange_form = fields.Many2one('form.exchange', string="Hình thức trao đổi")
-    produce_year = fields.Many2one('produce.year', string="Năm sản xuất")
+                                      ('twelve', 12),], string="Tháng sản xuất", tracking=True)
+    distance = fields.Char(string="Cự li di chuyển(km)", tracking=True)
+    service_fee = fields.Float(string="Phí dịch vụ", tracking=True)
+    sent_date = fields.Datetime(string="Ngày gửi báo cáo", tracking=True)
+    return_date = fields.Datetime(string="Ngày trả hàng", tracking=True)
+    picture = fields.Many2many('ir.attachment', string="Ảnh hiện trường", tracking=True)
+    exchange_form = fields.Many2one('form.exchange', string="Hình thức trao đổi", tracking=True)
+    produce_year = fields.Many2one('produce.year', string="Năm sản xuất", tracking=True)
 
 
     @api.depends('exchange_form')
