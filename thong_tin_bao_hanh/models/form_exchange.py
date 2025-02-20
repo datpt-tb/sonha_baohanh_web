@@ -7,3 +7,5 @@ class FormExchange(models.Model):
 
     form_exchange_code = fields.Char(string="Mã trao đổi")
     form_exchange_name = fields.Text(string="Tên trao đổi")
+    change_status = fields.Boolean(string="Đổi trạng thái")
+    change_done_date = fields.Boolean(string="Xử lý ngay")

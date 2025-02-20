@@ -52,12 +52,21 @@ class WarrantyInformation(models.Model):
     picture = fields.Many2many('ir.attachment', string="Ảnh hiện trường", tracking=True)
     exchange_form = fields.Many2one('form.exchange', string="Hình thức trao đổi", tracking=True)
     produce_year = fields.Many2one('produce.year', string="Năm sản xuất", tracking=True)
+    warranty_date_completed = fields.Datetime(string="Ngày bảo hành xong", compute="fill_warranty_date_completed", store=True, tracking=True)
 
 
     @api.depends('exchange_form')
     def change_status(self):
         for r in self:
-            if r.exchange_form:
+            if r.exchange_form.change_status:
                 r.warranty_status = 'close'
             else:
                 r.warranty_status = 'open'
+
+    @api.depends('exchange_form', 'return_date')
+    def fill_warranty_date_completed(self):
+        for r in self:
+            if r.exchange_form.change_done_date and r.return_date:
+                r.warranty_date_completed = r.return_date
+            else:
+                r.warranty_date_completed = ''
