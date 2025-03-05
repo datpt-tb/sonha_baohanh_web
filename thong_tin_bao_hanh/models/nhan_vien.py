@@ -6,7 +6,7 @@ class NhanVien(models.Model):
 
     ma_nhan_vien = fields.Char(string="Mã nhân viên")
     ten_nhan_vien = fields.Text(string="Tên nhân viên")
-    chi_nhanh_id = fields.Many2one('chi.nhanh', string="Chi nhánh")
+    chi_nhanh_id = fields.Many2one('bh.branch', string="Chi nhánh")
     dia_chi = fields.Text(string="Địa chỉ")
     dien_thoai = fields.Text(string="Điện thoại")
     lock = fields.Boolean(string="Lock")

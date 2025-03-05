@@ -42,7 +42,7 @@
 
      <menuitem id="menu_danh_muc_chi_nhanh"
               name="Chi nhánh"
-              action="action_chi_nhanh"
+              action="action_bh_branch"
               parent="menu_category_root"
               sequence="8"/>
 
@@ -104,4 +104,51 @@
               action="action_close_staff_warranty_information"
               parent="menu_staff_warranty_information"
               sequence="3"/>
+
+    <menuitem id="menu_sonha_product"
+              name="Sản phẩm"
+              action="action_sonha_product"
+              parent="menu_category_root"
+              sequence="16"/>
+
+    <menuitem id="menu_data_branch"
+              name="Data chi nhánh"
+              parent="menu_thong_tin_bao_hanh"
+              sequence="4"/>
+
+    <menuitem id="menu_import_before_repair"
+              name="Nhập kho trước SC"
+              parent="menu_data_branch"
+              action="action_import_before_repair"
+              sequence="1"/>
+
+    <menuitem id="menu_export_company"
+              name="Xuất kho về công ty"
+              parent="menu_data_branch"
+              action="action_export_company"
+              sequence="2"/>
+
+    <menuitem id="menu_return_customer"
+              name="Nhập kho trả khách"
+              parent="menu_data_branch"
+              action="action_return_customer"
+              sequence="3"/>
+
+    <menuitem id="menu_export_warehouse"
+              name="Xuất kho"
+              parent="menu_data_branch"
+              action="action_export_warehouse"
+              sequence="4"/>
+
+    <menuitem id="menu_form_export_company"
+              name="Phiếu xuất kho về CTY"
+              parent="menu_thong_tin_bao_hanh"
+              action="action_form_export_company"
+              sequence="7"/>
+
+    <menuitem id="menu_transfer_warehouse"
+              name="Chuyển kho"
+              parent="menu_thong_tin_bao_hanh"
+              action="action_transfer_warehouse"
+              sequence="8"/>
 </odoo>

@@ -11,7 +11,7 @@
                 <form>
                     <sheet>
                         <group>
-                            <field name="chi_nhanh_id"/>
+<!--                            <field name="chi_nhanh_id"/>-->
                             <field name="ma_nhan_vien"/>
                             <field name="ten_nhan_vien"/>
                         </group>
@@ -26,7 +26,7 @@
             <field name="model">nhan.vien</field>
             <field name="arch" type="xml">
                 <tree string="nhan_vien" default_order="create_date desc" editable="bottom">
-                    <field name="chi_nhanh_id"/>
+<!--                    <field name="chi_nhanh_id"/>-->
                     <field name="ma_nhan_vien"/>
                     <field name="ten_nhan_vien"/>
                     <field name="dien_thoai"/>
@@ -43,7 +43,7 @@
             <field name="model">nhan.vien</field>
             <field name="arch" type="xml">
                 <search>
-                    <field name="chi_nhanh_id"/>
+<!--                    <field name="chi_nhanh_id"/>-->
                     <field name="ma_nhan_vien"/>
                     <field name="ten_nhan_vien"/>
                     <field name="dien_thoai"/>

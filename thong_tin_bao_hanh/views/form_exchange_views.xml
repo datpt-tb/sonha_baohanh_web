@@ -9,6 +9,7 @@
                 <field name="form_exchange_name"/>
                 <field name="change_status"/>
                 <field name="change_done_date"/>
+                <field name="import_company"/>
             </tree>
         </field>
     </record>
