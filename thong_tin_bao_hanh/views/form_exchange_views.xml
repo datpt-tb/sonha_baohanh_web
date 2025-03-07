@@ -4,9 +4,12 @@
         <field name="name">form.exchange.tree.view</field>
         <field name="model">form.exchange</field>
         <field name="arch" type="xml">
-            <tree string="Hình thức trao đổi">
+            <tree string="Hình thức trao đổi"  editable="bottom">
                 <field name="form_exchange_code"/>
                 <field name="form_exchange_name"/>
+                <field name="change_status"/>
+                <field name="change_done_date"/>
+                <field name="import_company"/>
             </tree>
         </field>
     </record>

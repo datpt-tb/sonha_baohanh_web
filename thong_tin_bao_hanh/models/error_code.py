@@ -3,6 +3,7 @@ from odoo import api, fields, models
 
 class MaLoi(models.Model):
     _name = 'error.code'
+    _rec_name = 'error_code'
 
     error_code = fields.Char(string="Mã lỗi")
     error_name = fields.Text(string="Tên lỗi")

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="export_company_tree_view" model="ir.ui.view">
+        <field name="name">export.company.tree.view</field>
+        <field name="model">export.company</field>
+        <field name="arch" type="xml">
+            <tree string="Xuất kho về công ty" editable="bottom">
+                <field name="export_date"/>
+                <field name="delivery_note"/>
+                <field name="request_emp"/>
+                <field name="warranty_code"/>
+                <field name="product_code"/>
+                <field name="product_name"/>
+                <field name="export_warehouse"/>
+                <field name="unit"/>
+                <field name="request_amount"/>
+                <field name="export_amount"/>
+                <field name="note"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_export_company" model="ir.actions.act_window">
+        <field name="name">Xuất kho về công ty</field>
+        <field name="res_model">export.company</field>
+        <field name="view_mode">tree</field>
+    </record>
+</odoo>

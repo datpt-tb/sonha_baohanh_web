@@ -10,14 +10,14 @@ class NguoiDung(models.Model):
     password_hint = fields.Text(string="PasswordHint")
     di_dong = fields.Char(string="Di động")
     email = fields.Char(string="Email")
-    # chi_nhanh_ids = fields.One2many('chi.nhanh', 'nguoi_dung_ids', string="Chi nhánh")
-    chi_nhanh_ids = fields.Many2many(
-        'chi.nhanh',
-        #     #'nguoidung_chinhanh',  # Tên bảng trung gian
-        #     #'id',  # Cột trỏ đến mô hình hiện tại
-        #     #'id',  # Cột trỏ đến mô hình đích
-        string="Chi nhánh"
-    )
+    # chi_nhanh_ids = fields.One2many('bh.branch', 'nguoi_dung_ids', string="Chi nhánh")
+    # chi_nhanh_ids = fields.Many2many(
+    #     'bh.branch',
+    #     #     #'nguoidung_chinhanh',  # Tên bảng trung gian
+    #     #     #'id',  # Cột trỏ đến mô hình hiện tại
+    #     #     #'id',  # Cột trỏ đến mô hình đích
+    #     string="Chi nhánh"
+    # )
 
     user_id = fields.Many2one('res.users', string="Tài khoản liên kết")
 

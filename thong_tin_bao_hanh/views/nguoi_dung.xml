@@ -20,7 +20,7 @@
                             <field name="password_hint"/>
                             <field name="di_dong"/>
                             <field name="email"/>
-                            <field name="chi_nhanh_ids" widget="many2many_tags"/>
+<!--                            <field name="chi_nhanh_ids" widget="many2many_tags"/>-->
                             <field name="user_id" readonly="1"/>
                             <!--
                             <field name="chi_nhanh_ids" string=" ">
