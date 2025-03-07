@@ -58,3 +58,52 @@ class ImportBeforeRepair(models.Model):
                 r.plant = ''
 
 
+    def create(self, vals):
+        list_records = super(ImportBeforeRepair, self).create(vals)
+        for record in list_records:
+            vals = {
+                'customer_name': record.customer_name,
+                'phone_number': record.phone_number,
+                'address': record.address,
+                'warranty_code': record.warranty_code.id,
+                'product_code': record.product_code,
+                'product_name': record.product_name,
+                'unit': record.unit,
+                'request_amount': record.amount,
+                'export_amount': record.amount,
+                'branch_id': record.branch_id.id,
+                'import_before_repair': record.id,
+            }
+            self.env['form.export.company.rel'].sudo().create(vals)
+        return list_records
+
+    def write(self, vals):
+        res = super(ImportBeforeRepair, self).write(vals)
+        for record in self:
+            form_export = self.env['form.export.company.rel'].sudo().search([('import_before_repair', '=', record.id)])
+            vals = {
+                'customer_name': record.customer_name,
+                'phone_number': record.phone_number,
+                'address': record.address,
+                'warranty_code': record.warranty_code.id,
+                'product_code': record.product_code,
+                'product_name': record.product_name,
+                'unit': record.unit,
+                'request_amount': record.amount,
+                'export_amount': record.amount,
+                'branch_id': record.branch_id.id,
+                'import_before_repair': record.id,
+            }
+            if form_export:
+                form_export.sudo().write(vals)
+        return res
+
+    def unlink(self):
+        for r in self:
+            removes = self.env['form.export.company.rel'].sudo().search([('import_before_repair', '=', r.id)])
+            if removes:
+                removes.sudo().unlink()
+        return super(ReturnCustomer, self).unlink()
+
+
+

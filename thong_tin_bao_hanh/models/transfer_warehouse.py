@@ -12,8 +12,10 @@ class TransferWarehouse(models.Model):
     product_name = fields.Char(string="Tên sản phẩm")
     unit = fields.Char(string="ĐVT")
     request_amount = fields.Integer(string="SL yêu cầu")
-    receive_amount = fields.Integer(string="SL thực nhận")
+    receive_amount = fields.Integer(string="SL thực nhập")
     export_warehouse = fields.Char(string="Kho xuất")
     import_warehouse = fields.Char(string="Kho nhập")
     note = fields.Text(string="Ghi chú")
     branch_id = fields.Many2one('bh.branch', string="Chi nhánh")
+    return_customer = fields.Many2one('return.customer', string="Nhập kho trả khách")
+

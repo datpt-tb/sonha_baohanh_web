@@ -36,8 +36,8 @@ access_return_customer,access.return.customer,model_return_customer,,1,1,1,1
 
 access_export_warehouse,access.export.warehouse,model_export_warehouse,,1,1,1,1
 
-access_form_export_company,access.form.export.company,model_form_export_company,,1,1,1,1
-
 access_transfer_warehouse,access.transfer.warehouse,model_transfer_warehouse,,1,1,1,1
 
 access_get_transfer_warehouse,access.get.transfer.warehouse,model_get_transfer_warehouse,,1,1,1,1
+
+access_form_export_company_rel,access.form.export.company.rel,model_form_export_company_rel,,1,1,0,0
