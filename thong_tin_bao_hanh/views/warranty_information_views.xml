@@ -32,6 +32,7 @@
             <field name="model">warranty.information</field>
             <field name="arch" type="xml">
                 <tree string="thong_tin_bao_hanh" default_order="create_date desc" editable="bottom">
+                    <field name="id" string="ID bảo hành"/>
                    <field name="reporter"/>
                    <field name="customer_information"/>
                    <field name="mobile_customer"/>

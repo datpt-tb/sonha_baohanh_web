@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
      <menuitem id="menu_thong_tin_bao_hanh"
-              name="Thông tin bảo hành"
+              name="Bảo hành"
               sequence="1"/>
 
     <menuitem id="menu_warranty_information"
