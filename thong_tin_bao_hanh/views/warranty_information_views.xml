@@ -45,7 +45,7 @@
                    <field name="branch_id"/>
                    <field name="call_date"/>
                    <field name="appointment_date"/>
-                   <field name="create_date" string="Ngày tạo"/>
+<!--                   <field name="create_date" string="Ngày tạo"/>-->
                 </tree>
             </field>
         </record>

@@ -7,7 +7,7 @@ class ImportBeforeRepair(models.Model):
     customer_name = fields.Char(string="Tên khách hàng", compute="fill_data_import", store=True)
     phone_number = fields.Char(string="Điện thoại")
     address = fields.Text(string="Địa chỉ")
-    unit = fields.Char(string="ĐVT")
+    unit = fields.Char(string="ĐVT", compute="filter_product", store=True)
     amount = fields.Integer(string="Số lượng")
     produce_month = fields.Selection([('one', 1),
                                       ('two', 2),
@@ -27,8 +27,8 @@ class ImportBeforeRepair(models.Model):
     delivery_people = fields.Char(string="Người vận chuyển")
     branch_id = fields.Many2one('bh.branch', string="Chi nhánh")
     bh_create_date = fields.Datetime(string="Ngày nhập", default=fields.Datetime.now)
-    product_code = fields.Char(string="Mã sản phẩm")
-    product_name = fields.Char(string="Tên sản phẩm")
+    product_code = fields.Many2one('sonha.product', string="Mã sản phẩm")
+    product_name = fields.Char(string="Tên sản phẩm", compute="filter_product", store=True)
     warehouse = fields.Char(string="Mã kho nhập")
     plant = fields.Char(string="Plant")
 
@@ -57,6 +57,16 @@ class ImportBeforeRepair(models.Model):
                 r.warehouse = ''
                 r.plant = ''
 
+    @api.depends('product_code')
+    def filter_product(self):
+        for r in self:
+            if r.product_code:
+                r.product_name = r.product_code.product_name if r.product_code.product_name else ''
+                r.unit = r.product_code.unit if r.product_code.unit else ''
+            else:
+                r.product_name = ''
+                r.unit = ''
+
 
     def create(self, vals):
         list_records = super(ImportBeforeRepair, self).create(vals)
@@ -66,13 +76,14 @@ class ImportBeforeRepair(models.Model):
                 'phone_number': record.phone_number,
                 'address': record.address,
                 'warranty_code': record.warranty_code.id,
-                'product_code': record.product_code,
+                'product_code': record.product_code.id,
                 'product_name': record.product_name,
                 'unit': record.unit,
                 'request_amount': record.amount,
                 'export_amount': record.amount,
                 'branch_id': record.branch_id.id,
                 'import_before_repair': record.id,
+                'plant': record.plant
             }
             self.env['form.export.company.rel'].sudo().create(vals)
         return list_records
@@ -86,13 +97,14 @@ class ImportBeforeRepair(models.Model):
                 'phone_number': record.phone_number,
                 'address': record.address,
                 'warranty_code': record.warranty_code.id,
-                'product_code': record.product_code,
+                'product_code': record.product_code.id,
                 'product_name': record.product_name,
                 'unit': record.unit,
                 'request_amount': record.amount,
                 'export_amount': record.amount,
                 'branch_id': record.branch_id.id,
                 'import_before_repair': record.id,
+                'plant': record.plant
             }
             if form_export:
                 form_export.sudo().write(vals)

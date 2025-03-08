@@ -28,7 +28,7 @@ class GetTransferWarehouse(models.TransientModel):
         for r in list_records:
             vals = {
                 'warranty_code': r.warranty_code.id,
-                'product_code': r.product_code,
+                'product_code': r.product_code.id,
                 'product_name': r.product_name,
                 'unit': r.unit,
                 'amount': r.receive_amount,
