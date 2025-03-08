@@ -2,6 +2,7 @@ from odoo import api, fields, models
 
 class SonHaProduct(models.Model):
     _name = 'sonha.product'
+    _rec_name = 'product_code'
 
     product_code = fields.Char(string="Mã sản phẩm")
     product_name = fields.Text(string="Tên sản phẩm")

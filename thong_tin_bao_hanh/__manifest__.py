@@ -31,7 +31,6 @@
         'views/export_company_views.xml',
         'views/return_customer_views.xml',
         'views/export_warehouse_views.xml',
-        'views/form_export_company_views.xml',
         'views/transfer_warehouse_views.xml',
         'views/btn_get_transfer_warehouse.xml',
         'wizard/get_transfer_warehouse_views.xml',

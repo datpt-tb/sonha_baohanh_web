@@ -57,21 +57,20 @@
             <field name="name">Tổng quan</field>
             <field name="res_model">warranty.information</field>
             <field name="view_mode">tree,form</field>
-            <field name="domain">[('transfer_warehouse', '!=', True)]</field>
         </record>
 
         <record id="action_open_staff_warranty_information" model="ir.actions.act_window">
             <field name="name">Danh sách mở</field>
             <field name="res_model">warranty.information</field>
             <field name="view_mode">tree,form</field>
-            <field name="domain">[('warranty_status', '=', 'open'), ('transfer_warehouse', '!=', True)]</field>
+            <field name="domain">[('warranty_status', '=', 'open')]</field>
         </record>
 
         <record id="action_close_staff_warranty_information" model="ir.actions.act_window">
             <field name="name">Danh sách đóng</field>
             <field name="res_model">warranty.information</field>
             <field name="view_mode">tree,form</field>
-            <field name="domain">[('warranty_status', '=', 'close'), ('transfer_warehouse', '!=', True)]</field>
+            <field name="domain">[('warranty_status', '=', 'close')]</field>
         </record>
     </data>
 </odoo>

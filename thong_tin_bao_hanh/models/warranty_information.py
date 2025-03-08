@@ -56,7 +56,6 @@ class WarrantyInformation(models.Model):
     warranty_date_completed = fields.Datetime(string="Ngày bảo hành xong", compute="fill_warranty_date_completed", store=True, tracking=True)
     import_company = fields.Boolean(string="Nhập kho", compute="is_import", store=True)
     transfer_warehouse = fields.Boolean(string="Chuyển kho")
-    transfer_warehouse_ids = fields.One2many('transfer.warehouse', 'warranty_code', string="Chuyển kho")
 
 
     @api.depends('exchange_form')
@@ -83,35 +82,5 @@ class WarrantyInformation(models.Model):
             else:
                 r.import_company = False
 
-    def create(self, vals):
-        list_records = super(WarrantyInformation, self).create(vals)
-        for record in list_records:
-            transfer_warehouse = self.env['transfer.warehouse'].sudo().search([('warranty_code', '=', record.id)])
-            vals = {
-                'customer_information': record.customer_information,
-                'mobile_customer': record.mobile_customer,
-                'address': record.address
-            }
-            if transfer_warehouse:
-                transfer_warehouse.sudo().write(vals)
-        return list_records
-
-    def write(self, vals):
-        res = super(WarrantyInformation, self).write(vals)
-        for record in self:
-            transfer_warehouse = self.env['transfer.warehouse'].sudo().search([('warranty_code', '=', record.id)])
-            vals = {
-                'customer_information': record.customer_information,
-                'mobile_customer': record.mobile_customer,
-                'address': record.address
-            }
-            if transfer_warehouse:
-                transfer_warehouse.sudo().write(vals)
-        return res
-
-    def unlink(self):
-        for r in self:
-            self.env['transfer.warehouse'].search([('warranty_code', '=', r.id)]).unlink()
-        return super(WarrantyInformation, self).unlink()
 
 

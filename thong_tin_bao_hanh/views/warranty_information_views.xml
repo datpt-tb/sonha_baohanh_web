@@ -32,6 +32,7 @@
             <field name="model">warranty.information</field>
             <field name="arch" type="xml">
                 <tree string="thong_tin_bao_hanh" default_order="create_date desc" editable="bottom">
+                    <field name="id" string="ID bảo hành"/>
                    <field name="reporter"/>
                    <field name="customer_information"/>
                    <field name="mobile_customer"/>
@@ -44,7 +45,7 @@
                    <field name="branch_id"/>
                    <field name="call_date"/>
                    <field name="appointment_date"/>
-                   <field name="create_date" string="Ngày tạo"/>
+<!--                   <field name="create_date" string="Ngày tạo"/>-->
                 </tree>
             </field>
         </record>
@@ -69,8 +70,6 @@
             <field name="view_ids" eval="[(5, 0, 0),
                 (0, 0, {'view_mode': 'tree', 'view_id': ref('warranty_information_tree_view')}),
                 (0, 0, {'view_mode': 'form', 'view_id': ref('warranty_information_form_view')})]"/>
-            <field name="domain">[('transfer_warehouse', '!=', True)]</field>
-            <field name="context">{'default_transfer_warehouse': False}</field>
         </record>
 
     </data>
