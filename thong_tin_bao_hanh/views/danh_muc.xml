@@ -15,9 +15,9 @@
               parent="menu_thong_tin_bao_hanh"
               sequence="10"/>
 
-    <menuitem id="menu_danh_muc_nguoi_dung"
+    <menuitem id="menu_bh_users"
               name="Người dùng"
-              action="action_nguoi_dung"
+              action="action_bh_users"
               parent="menu_category_root"
               sequence="3"/>
 

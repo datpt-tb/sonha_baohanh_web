@@ -24,7 +24,11 @@
             <field name="model">bh.branch</field>
             <field name="arch" type="xml">
                 <tree string="Chi nhánh" default_order="create_date desc" editable="bottom">
+                    <field name="branch_code"/>
                     <field name="branch_name"/>
+                    <field name="province_id"/>
+                    <field name="district_id"/>
+                    <field name="ward_commune_id"/>
                     <field name="address"/>
                     <field name="plant"/>
                     <field name="warehouse_tsc"/>

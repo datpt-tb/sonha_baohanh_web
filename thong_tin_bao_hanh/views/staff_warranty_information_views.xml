@@ -11,7 +11,7 @@
 <!--                    </header>-->
                     <sheet>
                         <group>
-                            <field name="id"/>
+                            <field name="display_warranty_code"/>
                             <field name="exchange_form"/>
                             <field name="error_code"/>
                             <field name="error_cause"/>
@@ -40,7 +40,7 @@
             <field name="model">warranty.information</field>
             <field name="arch" type="xml">
                 <tree string="Thông tin bảo hành" default_order="create_date desc">
-                    <field name="id"/>
+                    <field name="display_warranty_code"/>
                     <field name="customer_information"/>
                     <field name="mobile_customer"/>
                     <field name="reporter"/>
@@ -57,20 +57,21 @@
             <field name="name">Tổng quan</field>
             <field name="res_model">warranty.information</field>
             <field name="view_mode">tree,form</field>
+            <field name="domain">[('work', '=', 'assign')]</field>
         </record>
 
         <record id="action_open_staff_warranty_information" model="ir.actions.act_window">
             <field name="name">Danh sách mở</field>
             <field name="res_model">warranty.information</field>
             <field name="view_mode">tree,form</field>
-            <field name="domain">[('warranty_status', '=', 'open')]</field>
+            <field name="domain">[('warranty_status', '=', 'open'), ('work', '=', 'assign')]</field>
         </record>
 
         <record id="action_close_staff_warranty_information" model="ir.actions.act_window">
             <field name="name">Danh sách đóng</field>
             <field name="res_model">warranty.information</field>
             <field name="view_mode">tree,form</field>
-            <field name="domain">[('warranty_status', '=', 'close')]</field>
+            <field name="domain">[('warranty_status', '=', 'close'), ('work', '=', 'assign')]</field>
         </record>
     </data>
 </odoo>

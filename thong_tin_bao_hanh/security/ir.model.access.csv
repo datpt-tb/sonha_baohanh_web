@@ -41,3 +41,5 @@ access_transfer_warehouse,access.transfer.warehouse,model_transfer_warehouse,,1,
 access_get_transfer_warehouse,access.get.transfer.warehouse,model_get_transfer_warehouse,,1,1,1,1
 
 access_form_export_company_rel,access.form.export.company.rel,model_form_export_company_rel,,1,1,0,0
+
+access_bh_users,access.bh.users,model_bh_users,,1,1,1,1
