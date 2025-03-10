@@ -3,17 +3,17 @@ from odoo import api, fields, models
 
 class WarrantyInformation(models.Model):
     _name = 'warranty.information'
-    _rec_name = 'id'
+    _rec_name = 'display_warranty_code'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     id = fields.Char(string="ID")
     reporter = fields.Char(string="Người báo")
-    customer_information = fields.Text(string="Tên khách hàng")
+    customer_information = fields.Text(string="Tên khách hàng", required=True)
     mobile_customer = fields.Char(string="Số điện thoại")
 
     province_id = fields.Many2one('province', string="Tỉnh thành")
-    district_id = fields.Many2one('district', string="Quận/huyện")
-    ward_commune_id = fields.Many2one('ward.commune', string="Phường/xã")
+    district_id = fields.Many2one('district', string="Quận/huyện", domain="[('province_id', '=', province_id)]")
+    ward_commune_id = fields.Many2one('ward.commune', string="Phường/xã", domain="[('district_id', '=', district_id)]")
     address = fields.Text(string="Địa chỉ")
     product_type_id = fields.Many2one('product.type', string="Loại sản phẩm")
     error_information = fields.Text(string="Thông tin lỗi")
@@ -56,6 +56,23 @@ class WarrantyInformation(models.Model):
     warranty_date_completed = fields.Datetime(string="Ngày bảo hành xong", compute="fill_warranty_date_completed", store=True, tracking=True)
     import_company = fields.Boolean(string="Nhập kho", compute="is_import", store=True)
     transfer_warehouse = fields.Boolean(string="Chuyển kho")
+    display_warranty_code = fields.Char(string="ID bảo hành", compute="filter_display_code", store=True)
+    work = fields.Selection([('assign', 'Giao lịch'),
+                             ('non_assign', 'Không giao lịch')], string="Giao lịch", required=True, default='assign')
+    appointment = fields.Text(string="Hẹn khách")
+    sap_document = fields.Char(string="Chứng từ")
+    employee = fields.Many2one('bh.users', string="Nhân viên", domain="[('position', '=', 'employee')]")
+
+    @api.depends('customer_information')
+    def filter_display_code(self):
+        for r in self:
+            if r.id:
+                if r.work == 'assign':
+                    r.display_warranty_code = f"{r.id:06d}"
+                else:
+                    r.display_warranty_code = f"{r.id:06d}" + "N"
+            else:
+                r.display_warranty_code = ''
 
 
     @api.depends('exchange_form')

@@ -3,7 +3,8 @@ from odoo import api, fields, models
 class ImportBeforeRepair(models.Model):
     _name = 'import.before.repair'
 
-    warranty_code = fields.Many2one('warranty.information', string="ID bảo hành", domain="[('import_company', '=', True)]")
+    warranty_code = fields.Many2one('warranty.information', string="ID bảo hành",
+                                    domain="['|', ('import_company', '=', True), ('work', '=', 'non_assign')]")
     customer_name = fields.Char(string="Tên khách hàng", compute="fill_data_import", store=True)
     phone_number = fields.Char(string="Điện thoại")
     address = fields.Text(string="Địa chỉ")

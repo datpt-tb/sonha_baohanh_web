@@ -32,19 +32,24 @@
             <field name="model">warranty.information</field>
             <field name="arch" type="xml">
                 <tree string="thong_tin_bao_hanh" default_order="create_date desc" editable="bottom">
-                    <field name="id" string="ID bảo hành"/>
-                   <field name="reporter"/>
-                   <field name="customer_information"/>
-                   <field name="mobile_customer"/>
-                   <field name="province_id"/>
-                   <field name="district_id" domain="[('province_id', '=', province_id)]"/>
-                   <field name="ward_commune_id"/>
-                   <field name="address"/>
-                   <field name="product_type_id"/>
-                   <field name="error_information"/>
-                   <field name="branch_id"/>
-                   <field name="call_date"/>
-                   <field name="appointment_date"/>
+                    <field name="display_warranty_code"/>
+                    <field name="work"/>
+                    <field name="reporter"/>
+                    <field name="customer_information"/>
+                    <field name="mobile_customer"/>
+                    <field name="province_id"/>
+                    <field name="district_id"/>
+                    <field name="ward_commune_id"/>
+                    <field name="address"/>
+                    <field name="product_type_id"/>
+                    <field name="error_information"/>
+                    <field name="note"/>
+                    <field name="employee" readonly="work != 'assign'"/>
+                    <field name="branch_id"/>
+                    <field name="call_date"/>
+                    <field name="appointment_date"/>
+                    <field name="appointment"/>
+                    <field name="sap_document"/>
 <!--                   <field name="create_date" string="Ngày tạo"/>-->
                 </tree>
             </field>
