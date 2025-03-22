@@ -12,16 +12,11 @@ class GetTransferWarehouse(models.TransientModel):
     @api.depends('warranty_code')
     def fill_data_transfer_warehouse(self):
         for r in self:
-            if r.warranty_code:
-                r.customer_name = r.warranty_code.customer_information if r.warranty_code.customer_information else ''
-                r.customer_number = r.warranty_code.mobile_customer if r.warranty_code.mobile_customer else ''
-                r.address = r.warranty_code.address if r.warranty_code.address else ''
-                r.transfer_warehouse = self.env['transfer.warehouse'].search([('warranty_code', '=', r.warranty_code.id)])
-            else:
-                r.customer_name = ''
-                r.customer_number = ''
-                r.address = ''
-                r.transfer_warehouse = False
+            r.customer_name = r.warranty_code.customer_information if r.warranty_code.customer_information else ''
+            r.customer_number = r.warranty_code.mobile_customer if r.warranty_code.mobile_customer else ''
+            r.address = r.warranty_code.address if r.warranty_code.address else ''
+            r.transfer_warehouse = self.env['transfer.warehouse'].sudo().search([('warranty_code', '=', r.warranty_code.id)])
+
 
     def action_confirm(self):
         list_records = self.env['transfer.warehouse'].sudo().search([('warranty_code', '=', self.warranty_code.id)])
