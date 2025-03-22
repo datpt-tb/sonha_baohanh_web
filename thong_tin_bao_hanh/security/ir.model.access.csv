@@ -24,7 +24,10 @@ access_form_exchange,access_form_exchange,model_form_exchange,,1,1,1,1
 
 access_warranty_status,access_warranty_status,model_warranty_status,,1,1,1,1
 
-access_warranty_information,access_warranty_information,model_warranty_information,,1,1,1,1
+access_admin_warranty_information,access.admin.warranty.information,model_warranty_information,group_warranty_admin,1,1,1,1
+access_input_warranty_information,access.input.warranty.information,model_warranty_information,group_warranty_input,1,1,1,1
+access_manager_warranty_information,access.manager.warranty.information,model_warranty_information,group_warranty_manager,1,0,0,0
+access_employee_warranty_information,access.employee.warranty.information,model_warranty_information,group_warranty_employee,1,1,0,0
 
 access_import_before_repair,access.import.before.repair,model_import_before_repair,,1,1,1,1
 

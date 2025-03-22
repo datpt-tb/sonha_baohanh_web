@@ -11,6 +11,7 @@
         'base', 'mail'
     ],
     'data': [
+        'security/security.xml',
         'security/ir.model.access.csv',
         'views/nguoi_dung.xml',
         'views/bh_users_views.xml',

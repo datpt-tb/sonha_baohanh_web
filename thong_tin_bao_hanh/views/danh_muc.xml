@@ -8,6 +8,7 @@
               name="Thông tin bảo hành"
               parent="menu_thong_tin_bao_hanh"
               action="action_warranty_information"
+              groups="thong_tin_bao_hanh.group_warranty_admin,thong_tin_bao_hanh.group_warranty_input,thong_tin_bao_hanh.group_warranty_manager"
               sequence="2"/>
 
     <menuitem id="menu_category_root"
@@ -90,6 +91,7 @@
     <menuitem id="menu_staff_warranty_information"
               name="Thông tin bảo hành(Nhân viên)"
               parent="menu_thong_tin_bao_hanh"
+              groups="thong_tin_bao_hanh.group_warranty_employee,thong_tin_bao_hanh.group_warranty_admin"/>
               sequence="3"/>
 
     <menuitem id="menu_all_staff_warranty_information"
