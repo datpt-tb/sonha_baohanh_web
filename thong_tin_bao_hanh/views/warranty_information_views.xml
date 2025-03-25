@@ -75,7 +75,9 @@
             <field name="view_ids" eval="[(5, 0, 0),
                 (0, 0, {'view_mode': 'tree', 'view_id': ref('warranty_information_tree_view')}),
                 (0, 0, {'view_mode': 'form', 'view_id': ref('warranty_information_form_view')})]"/>
+            <field name="groups_id" eval="[(4, ref('thong_tin_bao_hanh.group_warranty_manager')),
+         (4, ref('thong_tin_bao_hanh.group_warranty_input')),
+         (4, ref('thong_tin_bao_hanh.group_warranty_admin'))]"/>
         </record>
-
     </data>
 </odoo>

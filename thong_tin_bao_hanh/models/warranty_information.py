@@ -1,5 +1,5 @@
 from odoo import api, fields, models
-
+from odoo.exceptions import UserError, ValidationError
 
 class WarrantyInformation(models.Model):
     _name = 'warranty.information'
@@ -23,7 +23,7 @@ class WarrantyInformation(models.Model):
     number_warranty_times = fields.Integer(string="Số lần bảo hành")
     warranty_status = fields.Selection([('open', "Mở"),
                                         ('close', "Đóng")], string="Trạng thái",
-                                       default='open', compute="change_status", store=True, tracking=True)
+                                       default='open', tracking=True)
     error_code = fields.Many2one('error.code', string="Mã lỗi", tracking=True)
 
     staff_number = fields.Char(string="Điện thoại nhân viên")
@@ -62,28 +62,36 @@ class WarrantyInformation(models.Model):
     appointment = fields.Text(string="Hẹn khách")
     sap_document = fields.Char(string="Chứng từ")
     employee = fields.Many2one('bh.users', string="Nhân viên", domain="[('position', '=', 'employee')]")
+    non_fix = fields.Boolean(string="Không sửa", compute="is_non_fix", store=True)
 
-    @api.depends('customer_information')
+    @api.depends('work')
     def filter_display_code(self):
         for r in self:
-            if r.id:
-                if r.work == 'assign':
-                    r.display_warranty_code = f"{r.id:06d}"
-                else:
-                    r.display_warranty_code = f"{r.id:06d}" + "N"
+            if r.work != 'assign':
+                r.display_warranty_code = r.display_warranty_code + "N" if r.display_warranty_code else ''
             else:
-                r.display_warranty_code = ''
+                r.display_warranty_code = r.display_warranty_code.replace("N","") if r.display_warranty_code else ''
+
+    def create(self, vals):
+        record = super(WarrantyInformation, self).create(vals)
+        vals = {
+            'display_warranty_code': f"{record.id:06d}" if record.work == 'assign' else f"{record.id:06d}" + "N"
+        }
+        record.sudo().write(vals)
+        return record
+
+    def write(self,vals):
+        res = super(WarrantyInformation, self).write(vals)
+        if 'exchange_form' in vals:
+            for r in self:
+                vals = {
+                    'warranty_status': 'close' if r.exchange_form.change_status else 'open'
+                }
+                r.sudo().write(vals)
+        return res
 
 
-    @api.depends('exchange_form')
-    def change_status(self):
-        for r in self:
-            if r.exchange_form.change_status:
-                r.warranty_status = 'close'
-            else:
-                r.warranty_status = 'open'
-
-    @api.depends('exchange_form', 'return_date')
+    @api.depends('exchange_form.change_done_date', 'return_date')
     def fill_warranty_date_completed(self):
         for r in self:
             if r.exchange_form.change_done_date and r.return_date:
@@ -91,13 +99,21 @@ class WarrantyInformation(models.Model):
             else:
                 r.warranty_date_completed = ''
 
-    @api.depends('exchange_form')
+    @api.depends('exchange_form.import_company')
     def is_import(self):
         for r in self:
-            if r.exchange_form:
-                r.import_company = True if r.exchange_form.import_company else False
+            if r.exchange_form.import_company:
+                r.import_company = True
             else:
                 r.import_company = False
+
+    @api.depends('exchange_form.non_fix')
+    def is_non_fix(self):
+        for r in self:
+            if r.exchange_form.non_fix:
+                r.non_fix = True
+            else:
+                r.non_fix = False
 
 
 
