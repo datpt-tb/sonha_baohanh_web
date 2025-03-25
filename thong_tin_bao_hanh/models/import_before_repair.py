@@ -100,9 +100,7 @@ class ImportBeforeRepair(models.Model):
 
     def unlink(self):
         for r in self:
-            removes = self.env['form.export.company.rel'].sudo().search([('import_before_repair', '=', r.id)])
-            if removes:
-                removes.sudo().unlink()
+            self.env['form.export.company.rel'].sudo().search([('import_before_repair', '=', r.id)]).sudo().unlink()
         return super(ImportBeforeRepair, self).unlink()
 
 

@@ -20,13 +20,14 @@ class GetTransferWarehouse(models.TransientModel):
 
     def action_confirm(self):
         list_records = self.env['transfer.warehouse'].sudo().search([('warranty_code', '=', self.warranty_code.id)])
-        for r in list_records:
-            vals = {
-                'warranty_code': r.warranty_code.id,
-                'product_code': r.product_code.id,
-                'product_name': r.product_name,
-                'unit': r.unit,
-                'amount': r.receive_amount,
-                'branch_id': r.branch_id.id,
-            }
-            self.env['import.before.repair'].sudo().create(vals)
+        if list_records:
+            for r in list_records:
+                vals = {
+                    'warranty_code': r.warranty_code.id,
+                    'product_code': r.product_code.id,
+                    'product_name': r.product_name,
+                    'unit': r.unit,
+                    'amount': r.receive_amount,
+                    'branch_id': r.branch_id.id,
+                }
+                self.env['import.before.repair'].sudo().create(vals)
